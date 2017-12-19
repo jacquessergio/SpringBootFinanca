@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Spring Boot Financas</title>
+</head>
+<body>
+
+<p>Bem vindo ao sistemas de Financas</p>
+<p th:text="usuarios"></p>
+
+<fieldset>
+<legend>Cadastrar Usuário</legend>
+
+<form method="post" >
+	<label for="id">ID</label>
+	<input type="text" id="id" name="id" />
+	<br />
+	<label for="nome">Nome</label>
+	<input type="text" id="nome" name="nome" />
+	<br />
+	<label for="login">Login</label>
+	<input type="text" id="login" name="login" />
+	<br />
+	<label for="senha">Senha</label>
+	<input type="text" id="senha" name="senha" />
+	<br />
+	<input type="submit" value="Enviar" />
+</form>
+
+</fieldset> 
+
+<br />
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>Password</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="usuario: ${listaUsuario}">
+      <td ><p th:text="${usuario.id}" /></td>
+      <td ><p th:text="${usuario.nome}" /></td>
+      <td ><p th:text="${usuario.login}" /></td>
+      <td ><p th:text="${usuario.senha}" /></td>
+      <td ><a th:href="@{'usuario/'+${usuario.id}}">Remover</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>
